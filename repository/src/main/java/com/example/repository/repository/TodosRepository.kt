@@ -19,4 +19,14 @@ class TodosRepository (
         }
     }.flowOn(Dispatchers.IO)
 
+    fun getDetailTodo(todoId: Int) = flow {
+        emit(Resource.Loading)
+        try {
+            val response = service.getDetailTodo(todoId)
+            emit(Resource.Success(response))
+        } catch (e: Exception) {
+            emit(Resource.Error(e.message))
+        }
+    }.flowOn(Dispatchers.IO)
+
 }

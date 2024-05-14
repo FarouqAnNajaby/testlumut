@@ -7,5 +7,8 @@ import retrofit2.http.*
 interface ApiService {
     @GET("todos")
     suspend fun getListTodos() : List<ResponseTodosItem?>?
-
+    @GET("todos/{id}")
+    suspend fun getDetailTodo(
+        @Path("id") todoId: Int,
+    ) : ResponseTodosItem
 }

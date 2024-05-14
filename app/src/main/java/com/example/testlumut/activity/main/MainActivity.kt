@@ -1,5 +1,6 @@
 package com.example.testlumut.activity.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -7,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.repository.repository.remote.Resource
 import com.example.repository.repository.remote.response.ResponseTodosItem
+import com.example.testlumut.activity.detail.DetailActivity
 import com.example.testlumut.databinding.ActivityMainBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -39,10 +41,10 @@ class MainActivity : AppCompatActivity() {
                     movieList.add(it!!)
                     binding.rvData.layoutManager = GridLayoutManager(this,2)
                     binding.rvData.adapter = adapter
-                    adapter.onDetail = {
-        //            val intent = Intent(this@MainActivity, DetailActivity::class.java)
-        //            intent.putExtra(Extra.DATA, it.id)
-        //            startActivity(intent)
+                    adapter.onDetail = { it ->
+                        val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                    intent.putExtra("id", it.id)
+                    startActivity(intent)
                     }
                 }
             }
