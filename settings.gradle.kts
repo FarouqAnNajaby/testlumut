@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Test Lumut"
 include(":app")
- 
+include(":repository")
